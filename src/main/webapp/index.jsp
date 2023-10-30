@@ -2,27 +2,27 @@
 <html>
 <head><title>First jsp</title></head>
 <body>
-<h2>Hello World!</h2>
-<% String[] authors = request.getParameterValues("author");
 
-if(authors == null){ %>
+<% String[] steps = request.getParameterValues("step");
+
+if(steps == null){ %>
+<h2>Ты потерял память. Принять вызов НЛО?</h2>
 <form method="get">
-<input type="checkbox" name="author" value="Ilya Liashchanka">Ilya
-<input type="checkbox" name="author" value="Petr Sapojnikov">Petr
-<input type="checkbox" name="author" value="Vova Small">Vova
+<input type="radio" name="step" value="step1-true">Принять вызов
+<input type="radio" name="step" value="step1-false">Отклонить вызов
 <input type="submit" value="Submit">
 </form>
 <%}%>
 <%
 
-    if(authors != null){
+    if(steps != null){
         %>
 <h3>Выбранные авторы: </h3>
 <ul>
 <%
-  for(int i = 0; i < authors.length; i++) {
+  for(int i = 0; i < steps.length; i++) {
     %>
-    <li><%= authors[i]%></li>
+    <li><%= steps[i]%></li>
     <%
 }
         %>
