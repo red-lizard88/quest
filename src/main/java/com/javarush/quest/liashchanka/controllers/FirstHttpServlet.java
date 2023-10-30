@@ -14,6 +14,9 @@ import java.util.Enumeration;
 @WebServlet( urlPatterns = {"/secret"} )
 public class FirstHttpServlet extends HttpServlet {
 
+    public void init(){
+
+    }
 
 
     @Override
@@ -69,5 +72,8 @@ public class FirstHttpServlet extends HttpServlet {
 //        } finally {
 //            out.close();
 //        }
+    }
+    public void destroy(){
+
     }
 }
