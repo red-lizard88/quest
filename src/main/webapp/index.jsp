@@ -14,9 +14,9 @@ if(steps == null){ %>
 </form>
 <%}%>
 <%
-
     if(steps != null){
         %>
+
 <h3>Выбранные авторы: </h3>
 <ul>
 <%
