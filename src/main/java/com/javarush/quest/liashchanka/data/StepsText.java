@@ -13,7 +13,6 @@ public class StepsText {
     public static HashMap<String, List<String>> getStepsMap(){
          List<String> StepOneTrue = new ArrayList<>();
          List<String> StepOneFalse = new ArrayList<>();
-         HashMap<String, List<String>> steps = new HashMap();
 
         List<String> StepTwoTrue = new ArrayList<>();
         List<String> StepTwoFalse = new ArrayList<>();
@@ -21,6 +20,7 @@ public class StepsText {
         List<String> StepThreeTrue = new ArrayList<>();
         List<String> StepThreeFalse = new ArrayList<>();
 
+        HashMap<String, List<String>> steps = new HashMap();
 
 
         StepOneTrue.add("Ты принял вызов. Поднимешься на мостик к капитану?");

@@ -10,7 +10,8 @@
 
 <%
     if(name == null && steps == null){ %>
-<p>Введение:</p>
+<h2>Пролог</h2>
+<p>Ты стоишь в космическом порту и готов подняться на борт своего корабля. Так что вперед!</p>
 <form method="get">
     <input type="text" name="name" value="">
     <input type="submit" value="Представиться">
@@ -30,19 +31,16 @@
 
 <%
     if(steps != null){
-        %>
-<%
-
 
 
   for(int i = 0; i < steps.length; i++) {
+
+      if (steps[i].startsWith("step1")){
+
       String header = StepService.getStep(steps[i]).get(0);
-
 %>
-
 <h3><%=header%></h3>
 <form method="get">
-
     <%
             if (StepService.getStep(steps[i]).get(1) != "") {
     %>
@@ -53,12 +51,37 @@
     <input type="submit" value="Проголосовать">
     <%
                 }
+            }
+      else if(steps[i].startsWith("step2")){
+                    String header2 = StepService.getStep(steps[i]).get(0);
+                   %>
+        <h3><%=header2%></h3>
+        <form method="get">
+            <%
+                if (StepService.getStep(steps[i]).get(1) != "") {
+            %>
+
+            <input type="radio" name="step" value="step3-true"><%=StepService.getStep(steps[i]).get(1)%>
+            <input type="radio" name="step" value="step3-false"><%=StepService.getStep(steps[i]).get(2)%>
+            <input type="submit" value="Проголосовать">
+
+    <%
+                }
+                }
+                else if(steps[i].startsWith("step3")){
+                    String header3 = StepService.getStep(steps[i]).get(0);
+
+    %>
+            <h3><%=header3%></h3>
+
+            <%
+                    }
         }
         %>
 </form>
 
 
-<a href="<%= request.getRequestURI() %>">Назад</a>
+<a href="<%= request.getRequestURI() %>">В начало</a>
 <%
     }
 
