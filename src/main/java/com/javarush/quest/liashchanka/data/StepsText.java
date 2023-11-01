@@ -18,6 +18,11 @@ public class StepsText {
         List<String> StepTwoTrue = new ArrayList<>();
         List<String> StepTwoFalse = new ArrayList<>();
 
+        List<String> StepThreeTrue = new ArrayList<>();
+        List<String> StepThreeFalse = new ArrayList<>();
+
+
+
         StepOneTrue.add("Ты принял вызов. Поднимешься на мостик к капитану?");
         StepOneTrue.add("Подняться на мостик");
         StepOneTrue.add("Отказаться подниматься на мостик");
@@ -39,6 +44,18 @@ public class StepsText {
 
         steps.put("step2-true", StepTwoTrue);
         steps.put("step2-false", StepTwoFalse);
+
+        //-----
+        StepThreeTrue.add("Ты вернулся домой. Победа");
+        StepThreeTrue.add("");
+        StepThreeTrue.add("");
+
+        StepThreeFalse.add("Твою ложь разоблачили. Поражение");
+        StepThreeFalse.add("");
+        StepThreeFalse.add("");
+
+        steps.put("step3-true", StepThreeTrue);
+        steps.put("step3-false", StepThreeFalse);
 
         return steps;
     }
