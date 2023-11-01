@@ -1,3 +1,4 @@
+<%@ page import="com.javarush.quest.liashchanka.services.StepService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head><title>First jsp</title></head>
@@ -17,16 +18,32 @@ if(steps == null){ %>
     if(steps != null){
         %>
 
-<h3>Выбранные авторы: </h3>
-<ul>
+
 <%
+
+
+
   for(int i = 0; i < steps.length; i++) {
-    %>
-    <li><%= steps[i]%></li>
+      String header = StepService.getStep(steps[i]).get(0);
+
+%>
+<h3><%=header%></h3>
+<form method="get">
+
     <%
-}
+            if (StepService.getStep(steps[i]).get(1) != "") {
+    %>
+
+
+    <input type="radio" name="step" value="step2-true"><%=StepService.getStep(steps[i]).get(1)%>
+    <input type="radio" name="step" value="step2-false"><%=StepService.getStep(steps[i]).get(2)%>
+    <input type="submit" value="Submit">
+    <%
+                }
+
+        }
         %>
-    </ul>
+</form>
 <a href="<%= request.getRequestURI() %>">Назад</a>
 <%
     }
