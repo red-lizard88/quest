@@ -6,11 +6,16 @@
 
 <% String[] steps = request.getParameterValues("step");
     String[] name = request.getParameterValues("name");
+
+    HttpSession sessionRequest = request.getSession();
+    String nameSession = (String) sessionRequest.getAttribute("name");
+    System.out.println(nameSession);
+
 %>
 
 <%
     if(name == null && steps == null){ %>
-<h2>Пролог</h2>
+<h2>Пролог </h2>
 <p>Ты стоишь в космическом порту и готов подняться на борт своего корабля. Так что вперед!</p>
 <form method="get">
     <input type="text" name="name" value="">
@@ -20,8 +25,10 @@
 <%}%>
 
 <%
-    if(name != null && steps == null){ %>
-<h2>Ты потерял память. Принять вызов НЛО?</h2>
+    if(name != null && steps == null){
+
+%>
+<h2>Ты потерял память. Принять вызов НЛО? (Вас зовут: <%=nameSession%>)</h2>
 <form method="get">
     <input type="radio" name="step" value="step1-true">Принять вызов
     <input type="radio" name="step" value="step1-false">Отклонить вызов
@@ -39,7 +46,7 @@
 
       String header = StepService.getStep(steps[i]).get(0);
 %>
-<h3><%=header%></h3>
+<h3><%=header%> (Вас зовут: <%=nameSession%>)</h3>
 <form method="get">
     <%
             if (StepService.getStep(steps[i]).get(1) != "") {
@@ -55,7 +62,7 @@
       else if(steps[i].startsWith("step2")){
                     String header2 = StepService.getStep(steps[i]).get(0);
                    %>
-        <h3><%=header2%></h3>
+        <h3><%=header2%> (Вас зовут: <%=nameSession%>)</h3>
         <form method="get">
             <%
                 if (StepService.getStep(steps[i]).get(1) != "") {
