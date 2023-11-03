@@ -16,4 +16,9 @@ public class StepService {
         }
         return localOneStap;
     }
+
+
+    public static short getStep() {
+        return 0;
+    }
 }
