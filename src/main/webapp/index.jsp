@@ -7,15 +7,18 @@
 <% String[] steps = request.getParameterValues("step");
     String[] name = request.getParameterValues("name");
 
-    HttpSession sessionRequest = request.getSession();
-    String nameSession = (String) sessionRequest.getAttribute("name");
+
+    String nameSession = (String) session.getAttribute("name");
     System.out.println(nameSession);
 
+
+    session.setAttribute("name", nameSession);
+    System.out.println(nameSession);
 %>
 
 <%
     if(name == null && steps == null){ %>
-<h2>Пролог </h2>
+<h2>Пролог <%=session.getAttribute("name")%> </h2>
 <p>Ты стоишь в космическом порту и готов подняться на борт своего корабля. Так что вперед!</p>
 <form method="get">
     <input type="text" name="name" value="">
@@ -28,7 +31,7 @@
     if(name != null && steps == null){
 
 %>
-<h2>Ты потерял память. Принять вызов НЛО? (Вас зовут: <%=nameSession%>)</h2>
+<h2>Ты потерял память. Принять вызов НЛО? (Вас зовут: <%=session.getAttribute("name")%>)</h2>
 <form method="get">
     <input type="radio" name="step" value="step1-true">Принять вызов
     <input type="radio" name="step" value="step1-false">Отклонить вызов
