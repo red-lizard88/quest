@@ -18,7 +18,7 @@ public class StepService {
     }
 
 
-    public static short getStep() {
-        return 0;
+    public static String getStep() {
+        return "";
     }
 }

@@ -12,15 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class StepServiceTest {
 
 @Test
-    void givenStaticMethodWithNoArgs () {
-        List<String> name = new ArrayList<>();
-        name.add("Привет");
+    void givenStaticMethodWithArgs () {
         try (MockedStatic<StepService> utilities =  Mockito.mockStatic(StepService.class)) {
 
-            utilities.when(StepService::getStep).thenReturn(0);
+            utilities.when(StepService::getStep).thenReturn("Ты принял вызов. Поднимешься на мостик к капитану?");
 
-            //проверяем, что правило работает
-            assertEquals(0, StepService.getStep());
+
+            assertEquals("Ты принял вызов. Поднимешься на мостик к капитану?", StepService.getStep());
         }
     }
 
